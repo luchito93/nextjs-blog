@@ -5,7 +5,7 @@ import Layout from "../../components/layout"
 
 const FirstPost = () => {
     return (
-        <Layout>
+        <Layout home={false}>
             <div>
                 <Head>
                     <title>My first post</title>
@@ -16,9 +16,6 @@ const FirstPost = () => {
                 onLoad={() => console.log('Ya termino de cargar el facepur')}
                 />}
                 <h1>First post special 😍</h1>
-                <h2>
-                    <Link href="/"><a>Back to Home</a></Link>
-                </h2>
             </div>
         </Layout>
     )
