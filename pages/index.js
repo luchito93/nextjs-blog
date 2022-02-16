@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Layout from '../components/layout'
 import { getSortedPostsData } from '../lib/posts'
 import utilsStyles from '../styles/utils.module.css'
+import Date from '../components/date'
 
 const getStaticProps = async () => {
   const allPostData = getSortedPostsData()
@@ -68,11 +69,11 @@ const Home = ({ allPostData }) => {
           {
             allPostData.map(({id, title, date}) => (
               <li className={utilsStyles.listItem} key={id}>
-                { title }
+                <Link href={`post/${id}`}>
+                  <a>{title}</a>
+                </Link>
                 <br />
-                {id}
-                <br />
-                {date}
+                <Date dateString={date} />
               </li>
             ))
           }
