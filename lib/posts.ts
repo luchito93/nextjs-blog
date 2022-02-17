@@ -23,7 +23,7 @@ const getSortedPostsData = () => {
         // Combine the data with the id
         return {
             id,
-            ...matterResult.data
+            ...(matterResult.data as { date: string, title: string } )
         }
     })
 
@@ -63,7 +63,7 @@ const getAllPostIds = () => {
     })
 }
 
-const getPostData = async (id) => {
+const getPostData = async (id: string) => {
     const fullPath = path.join(postDirectory, `${id}.md`)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
 
@@ -79,7 +79,7 @@ const getPostData = async (id) => {
     return {
         id,
         contentHtml,
-        ...matterResult.data
+        ...(matterResult.data as { date: string, title: string })
     }
 }
 

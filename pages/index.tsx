@@ -4,8 +4,9 @@ import Layout from '../components/layout'
 import { getSortedPostsData } from '../lib/posts'
 import utilsStyles from '../styles/utils.module.css'
 import Date from '../components/date'
+import { GetStaticProps } from 'next'
 
-const getStaticProps = async () => {
+const getStaticProps : GetStaticProps = async () => {
   const allPostData = getSortedPostsData()
   return {
     props: {
@@ -14,7 +15,13 @@ const getStaticProps = async () => {
   }
 }
 
-const Home = ({ allPostData }) => {
+const Home = ({ allPostData }: {
+  allPostData: {
+    id: string,
+    title: string,
+    date: string
+  }[]
+}) => {
   return (
     <Layout home={true}>
       <Head>
@@ -69,7 +76,7 @@ const Home = ({ allPostData }) => {
           {
             allPostData.map(({id, title, date}) => (
               <li className={utilsStyles.listItem} key={id}>
-                <Link href={`post/${id}`}>
+                <Link href={`/post/${id}`}>
                   <a>{title}</a>
                 </Link>
                 <br />

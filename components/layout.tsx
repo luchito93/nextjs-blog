@@ -7,7 +7,7 @@ import utilsStyles from '../styles/utils.module.css'
 const name = 'Luichito gomez'
 const siteTitle = 'Next.js Sample Website'
 
-const Layout = ({ children, home }) => {
+const Layout = ({ children, home }: { children: React.ReactNode, home?: boolean }) => {
     const image =  <Image
                             priority
                             src="/images/profile.jpg"
